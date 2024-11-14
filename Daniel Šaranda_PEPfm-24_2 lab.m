@@ -117,3 +117,40 @@ hold on
 plot(x, Y)
 hold off
 legend('Target', 'Predicted')
+
+%%%Testavimas
+
+xt = 0.1:1/222:1;
+
+for j = 1:30000
+    for i = 1:length(xt)
+        %isvestis
+        v1_1 = xt(i) * w11_1 + b1_1;
+        v2_1 = xt(i) * w21_1 + b2_1;
+        v3_1 = xt(i) * w31_1 + b3_1;
+        v4_1 = xt(i) * w41_1 + b4_1;
+        v5_1 = xt(i) * w51_1 + b5_1;
+        v6_1 = xt(i) * w61_1 + b6_1;
+        v7_1 = xt(i) * w71_1 + b7_1;
+        v8_1 = xt(i) * w81_1 + b8_1;
+
+        y1_1 = tanh(v1_1);
+        y2_1 = tanh(v2_1);
+        y3_1 = tanh(v3_1);
+        y4_1 = tanh(v4_1);
+        y5_1 = tanh(v5_1);
+        y6_1 = tanh(v6_1);
+        y7_1 = tanh(v7_1);
+        y8_1 = tanh(v8_1);
+%Antras sluoksnis
+        tv1_2 = y1_1*w11_2 + y2_1*w12_2 + y3_1*w13_2 + y4_1*w14_2 + y5_1*w15_2 + y6_1*w16_2 + y7_1*w17_2 + y8_1*w18_2 + b1_2;
+        Yt(i) = tv1_2;
+    end
+end
+figure(2)
+plot(x, y,'b-');
+hold on
+plot(xt,Yt,'r--')
+hold off
+title('Istestuota funkcija nuo 0 iki 1 per 200 zingsniu')
+legend('Funkcija', 'Istestuota')
